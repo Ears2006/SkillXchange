@@ -22,6 +22,19 @@ Users can create profiles, showcase the skills they offer, list skills they want
 
 ---
 
+## 📸 Screenshots
+
+### 🏠 Home
+![SkillXchange Home](Screenshot-home.png)
+
+### 👤 Profile
+![SkillXchange Profile](Screenshot-profile.png)
+
+### 🏆 Leaderboard
+![SkillXchange Leaderboard](Screenshot-leaderboard.png)
+
+---
+
 ## 📦 Installation
 1. Clone the repo:  
    ```bash
