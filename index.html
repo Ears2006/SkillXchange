@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SkillXchange</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <!-- ===== Top Navigation (Tabs) ===== -->
+  <nav class="topnav">
+    <div class="brand">SkillXchange</div>
+    <ul class="tabs">
+      <li><a href="#" class="tab-link active" data-tab="home">Home</a></li>
+      <li><a href="#" class="tab-link" data-tab="user-profile">Profile</a></li>
+      <li><a href="#" class="tab-link" data-tab="leaderboard">Leaderboard</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <!-- ===== Home (Feed) ===== -->
+    <section id="home" class="tab-content">
+      <div class="card header-card">
+        <h2>Home</h2>
+        <p>Welcome to the SkillXchange feed. Post ideas, ask for help, or share progress.</p>
+      </div>
+
+      <!-- New Post Form -->
+      <div class="card">
+        <h3>Create a Post</h3>
+        <div class="input-row">
+          <textarea id="new-post-content" placeholder="Post a Skill to share!" rows="3"></textarea>
+          <button id="add-post-btn" class="btn">Post</button>
+        </div>
+      </div>
+
+      <!-- Feed container -->
+      <div id="feed-container" class="grid"></div>
+    </section>
+
+    <!-- ===== Profile (with vertical sub-tabs) ===== -->
+    <section id="user-profile" class="tab-content">
+      <div class="grid profile-grid">
+        <!-- Left column -->
+        <div class="card">
+          <div class="profile-top">
+            <img id="profile-pic" class="profile-pic" alt="Profile" src="default-profile.png"/>
+            <div class="who">
+              <div class="row">
+                <h2 id="profile-name"></h2>
+                <button id="edit-name-btn" class="btn sm">Edit</button>
+              </div>
+              <div class="row">
+                <span id="profile-points"></span>
+              </div>
+            </div>
+          </div>
+          <div class="bio-row">
+            <h3>Bio</h3>
+            <div class="row">
+              <p id="profile-bio" class="mono"></p>
+              <button id="edit-bio-btn" class="btn sm">Edit</button>
+            </div>
+          </div>
+
+          <!-- Subnav -->
+          <nav class="profile-subnav-vertical">
+            <a href="#" class="active" data-subtab="profile-home">Home</a>
+            <a href="#" data-subtab="profile-skills">Skills</a>
+            <a href="#" data-subtab="profile-photos">Photos</a>
+            <a href="#" data-subtab="profile-badges">Badges</a>
+          </nav>
+        </div>
+
+        <!-- Right column -->
+        <div class="card flex-grow">
+          <div class="profile-panes">
+
+            <!-- Profile Home -->
+            <div id="profile-home" class="profile-pane" style="display:block;">
+              <h3>Profile Home</h3>
+              <p class="hint">This is your profile home. Featured skills and your posts will go here.</p>
+
+              <!-- Featured skills snapshot -->
+              <div class="card">
+                <div class="skills-two-col">
+                  <div>
+                    <h4>Featured Offered Skills</h4>
+                    <ul id="featured-offered" class="pill-list"></ul>
+                  </div>
+                  <div>
+                    <h4>Featured Wanted Skills</h4>
+                    <ul id="featured-wanted" class="pill-list"></ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Profile create post form-->
+              <div class="card">
+                <h3>Create a Post</h3>
+                <div class="input-row">
+                  <textarea id="profile-new-post" placeholder="Post something..." rows="3"></textarea>
+                  <button id="profile-add-post-btn" class="btn">Post</button>
+                </div>
+              </div>
+
+              <!-- User posts -->
+              <div id="profile-posts" class="card"></div>
+            </div>
+
+            <!-- Photos -->
+            <div id="profile-photos" class="profile-pane" style="display:none;">
+              <div class="input-row">
+                <input type="file" id="photo-input" accept="image/*" multiple />
+                <button id="add-photo-btn" class="btn">Upload</button>
+              </div>
+              <p class="hint">JPEG/PNG recommended. Images are stored locally in your browser (no server yet).</p>
+              <div id="photo-grid" class="photo-grid"></div>
+            </div>
+
+            <!-- Badges -->
+            <div id="profile-badges" class="profile-pane" style="display:none;">
+              <ul id="badges-list" class="badges-grid"></ul>
+              <p class="hint">Badges appear here as you earn them.</p>
+            </div>
+
+            <!-- Skills -->
+            <div id="profile-skills" class="profile-pane" style="display:none;">
+              <div class="grid profile-grid">
+                <div class="card">
+                  <div class="skills-two-col">
+
+                    <!-- Offered Skills -->
+                    <div>
+                      <h3>Offered Skills</h3>
+                      <ul id="offered-skills" class="pill-list"></ul>
+                      <button id="offered-toggle" class="toggle-btn" style="display:none">Show More</button>
+                      <div class="input-row">
+                        <input type="text" id="new-offered-skill" placeholder="Add a new offered skill"/>
+                        <select id="new-offered-category">
+                          <option value="">Category</option>
+                          <option value="Tech">Tech</option>
+                          <option value="Food">Food</option>
+                          <option value="Home Repair">Home Repair</option>
+                          <option value="Education">Education</option>
+                          <option value="Art">Art</option>
+                          <option value="Health & Fitness">Health & Fitness</option>
+                          <option value="Other">Other</option>
+                        </select>
+                        <button id="add-offered-skill-btn" class="btn">Add</button>
+                      </div>
+                      <p class="hint">+10 points for each unique Offered skill (name + category).</p>
+                    </div>
+
+                    <!-- Wanted Skills -->
+                    <div>
+                      <h3>Wanted Skills</h3>
+                      <ul id="wanted-skills" class="pill-list"></ul>
+                      <div class="input-row">
+                        <input type="text" id="new-wanted-skill" placeholder="Add a new wanted skill"/>
+                        <button id="add-wanted-skill-btn" class="btn">Add</button>
+                      </div>
+                      <p class="hint">+5 points for each unique Wanted skill.</p>
+                      <p id="wanted-skill-error" class="error-message"></p>
+                      <button id="wanted-toggle" class="toggle-btn" style="display:none">Show More</button>
+                    </div>
+
+                    <!-- Learned Skills -->
+                    <div>
+                      <h3>Learned Skills</h3>
+                      <ul id="learned-skills" class="pill-list"></ul>
+                      <p class="hint">Skills you've completed will appear here.</p>
+                      <button id="learned-toggle" class="toggle-btn" style="display:none">Show More</button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div><!-- end profile-skills -->
+
+          </div><!-- end profile-panes -->
+        </div><!-- end right column -->
+      </div><!-- end grid -->
+    </section>
+
+    <!-- ===== Leaderboard ===== -->
+    <section id="leaderboard" class="tab-content">
+      <div class="card">
+        <h2>Leaderboard</h2>
+        <ul id="leaderboard-list" class="leaderboard"></ul>
+      </div>
+    </section>
+  </main>
+
+  <script src="https:cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="script.js" defer></script>
+
+  <!-- Confirm Learned Modal-->
+  <div id="confirm-modal" class="modal-overlay" style="display:none;">
+    <div class="modal-card">
+      <h3 id="confirm-message">Confirm</h3>
+      <div class="modal-actions">
+        <button id="confirm-yes" class="btn">Yes</button>
+        <button id="confirm-no" class="btn cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

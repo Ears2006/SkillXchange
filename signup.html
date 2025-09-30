@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSwap Signup</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page">
+    <header>
+        <h1>Sign Up for SkillSwap</h1>
+    </header>
+    <main>
+        <div class="auth-card">
+            <h2>Create Your Account</h2>
+            <form id="signup-form">
+                <!-- Name -->
+                <label for="name">Name</label>
+                <input type="text" id="name" class="input" placeholder="Your Name" required>
+
+                <!-- Bio -->
+                <label for="bio">Bio</label>
+                <textarea id="bio" class="input" placeholder="Tell us about yourself"></textarea>
+
+                <!-- Offered Skills -->
+                <label for="offered-skills">Skills You Offer</label>
+                <input type="text" id="offered-skills" class="input" placeholder="Separate multiple skills with commas">
+
+                <!-- Skills You Want -->
+                <label for="skills">Skills You Want</label>
+                <input type="text" id="skills" class="input" placeholder="Separate multiple skills with commas">
+                <span class="hint">Separate multiple skills with commas</span>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn">Sign Up</button>
+            </form>
+        </div>
+    </main>
+    <script src="signup.js"></script>
+</body>
+</html>
